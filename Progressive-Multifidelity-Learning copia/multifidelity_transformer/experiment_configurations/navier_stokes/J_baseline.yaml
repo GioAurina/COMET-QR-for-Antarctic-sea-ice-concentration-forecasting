@@ -1,0 +1,43 @@
+---
+experiment_name: "J_new"
+
+data:
+  path: "/u/archive/laureandi1/damommio/NS_data"
+  sequential_mask: False
+  scaling: "SV + Reynolds"
+  seq_len: 60
+  seq_freq: 10
+  dimensions:
+    level_1: 2
+    level_2: 20
+    level_3: 577
+    output: 32
+
+model:
+  checkpoints_path: "/home/damommio/Progressive-Multifidelity-Learning/checkpoints"
+  spatial_encoders_dim:
+    level_2: 16
+    level_3: 64
+  load_model: False
+  save_model: False
+  features: ["level_1"]
+  embedding_dim: 128
+  n_hidden: 4
+  dropout: 0.1
+
+logging:
+  wandb: False
+  gradients: False
+  save_model: False
+
+training:
+  epochs: 8400
+  batch_size: 128
+  optim_params:
+    learning_rate: 0.5
+    warmup: 400
+    betas:
+      - 0.9
+      - 0.98
+    eps: 1e-9
+    weight_decay: 1e-4

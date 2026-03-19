@@ -1,0 +1,12 @@
+checkpoints_path: "/home/damommio/Progressive-Multifidelity-Learning/checkpoints"
+spatial_encoders_dim:
+  level_2: 16
+  level_3: 64
+load_model: False
+save_model: False
+embedding_dim: 128
+n_heads: 2
+features: ["level_1", "level_2", "level_3"]
+mask_embeddings: True
+n_transformer_blocks: 6
+dropout: 0.2

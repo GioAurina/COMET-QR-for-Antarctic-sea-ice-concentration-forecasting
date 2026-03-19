@@ -1,0 +1,27 @@
+---
+data:
+  sequential_mask: False
+  seq_len: 60
+  seq_freq: 10
+  dimensions:
+    level_0: 2
+    level_1: 2
+    level_2: 20
+    level_3: 577
+    output: 32
+
+modelling:
+  epochs: 200
+  batch_size: 64
+  model_params:
+    embedding_dim: 64
+    n_heads: 1
+    mask_embeddings: True
+  optim_params:
+    learning_rate: 0.5
+    warmup: 400
+    betas:
+      - 0.9
+      - 0.98
+    eps: 1e-9
+    weight_decay: 1e-4

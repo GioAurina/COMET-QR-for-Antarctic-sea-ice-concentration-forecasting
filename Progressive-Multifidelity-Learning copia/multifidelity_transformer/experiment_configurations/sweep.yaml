@@ -1,0 +1,26 @@
+defaults:
+  - model: no_mask_embeddings
+  - data: combinatorial
+  - training: train_default
+  - logging: wandb
+  - _self_
+
+hydra:
+  mode: MULTIRUN
+  sweeper:
+    params:
+      # Model grid search
+      model.embedding_dim: 64 #, 256 #, 384
+      model.n_heads: 4 #1, 2, 4 #, 8
+      model.n_transformer_blocks: 3 , 6
+      model.dropout: 0.1 #, 0.2, 0.35
+      model.mask_embeddings: False
+      #model.features: ["level_1"]
+      # Training grid search
+      training.batch_size: 128 #, 256
+      training.epochs: 2100
+      training.eval_interval: 300
+      # Data grid search
+      #data.sequential_mask: True
+      # Seeds
+      +seed: 42, 43, 45 

@@ -1,0 +1,19 @@
+defaults:
+  - model: baseline_model_level_1
+  - data: combinatorial
+  - training: train_default
+  - logging: wandb
+  - _self_
+
+hydra:
+  mode: MULTIRUN
+  sweeper:
+    params:
+      # Model grid search
+      model: baseline_model_level_1, baseline_model_level_2, baseline_model_level_3
+      # Training grid search
+      training.batch_size: 128 #, 256
+      training.epochs: 8400
+      training.eval_interval: 2100
+      # Seeds
+      +seed: 42, 43, 45 
